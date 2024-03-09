@@ -37,13 +37,14 @@ def on_message(client, userdata, msg):
 
     da.add_printer_data(ink, pages)
 
-    if ink == 0:
-        ic("ALERT: Ink is ended!" + m_decode)
-        send_msg(client, warning_topic, "ALERT: Ink is about to be end!" + m_decode)
-    if ink < 100:
-        ic("ALERT: The ink is running dangerously low" + m_decode)
-        send_msg(client, warning_topic, "ALERT: The ink is running dangerously low" + m_decode)
-    if pages % 1000 == 0:
+    if ink < 20 and ink > 0:
+        ic("ALERT: Ink is ended! " + m_decode)
+        send_msg(client, warning_topic, "ALERT: Ink is about to be end! " + m_decode)
+        ink = -1
+    elif ink < 100 and ink > 0:
+        ic("ALERT: The ink is running dangerously low " + m_decode)
+        send_msg(client, warning_topic, "ALERT: The ink is running dangerously low " + m_decode)
+    if pages > 1000:
         ic("ALERT: Many pages have been printed; please ensure the machine is well-maintained and verify that everything is in proper order" + m_decode)
         send_msg(client, warning_topic, "ALERT: Many pages have been printed; please ensure the machine is well-maintained and verify that everything is in proper order" + m_decode)
 
@@ -73,7 +74,7 @@ def main():
     client = client_init(cname)
     # main monitoring loop
     client.loop_start()  # Start loop
-    client.subscribe(comm_topic+'5976397/sts')
+    client.subscribe(comm_topic+'/5976397/sts')
     
     try:
         while conn_time==0:
