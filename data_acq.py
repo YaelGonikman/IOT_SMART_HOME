@@ -37,7 +37,7 @@ def print_all_printer_data():
     for row in rows:
         print(row)
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
     # init if not intiated
     # init_db() 
     # Seed demo data
