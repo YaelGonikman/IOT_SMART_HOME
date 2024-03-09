@@ -21,9 +21,6 @@ password = passwords[nb]
 sub_topic = sub_topics[nb]
 pub_topic = pub_topics[nb]
 
-cups_thrash_hold = 7500 #7608 cups are 1800L of water
-water_liter_thrash_hold = 1800 #liter of water
-
 conn_time = 0
 manag_time= 10
 comm_topic = 'pr/home/printer/'
