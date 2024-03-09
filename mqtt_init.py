@@ -23,6 +23,5 @@ pub_topic = pub_topics[nb]
 
 conn_time = 0
 manag_time= 10
-comm_topic = 'pr/home/printer/'
-
-warning_topic = comm_topic + 'warning'
+comm_topic = 'pr/home/printer'
+warning_topic = comm_topic + '/warning'
