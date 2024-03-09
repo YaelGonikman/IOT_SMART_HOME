@@ -6,6 +6,7 @@ import random
 from mqtt_init import *
 from icecream import ic
 from datetime import datetime
+import data_acq as da
 
 def time_format():
     return f'{datetime.now()}  Manager|> '
@@ -33,6 +34,8 @@ def on_message(client, userdata, msg):
 
     pages = float(m_decode.split(' ')[1])
     ink = float(m_decode.split(' ')[3])
+
+    da.add_printer_data(ink, pages)
 
     if ink == 0:
         ic("ALERT: Ink is ended!" + m_decode)
