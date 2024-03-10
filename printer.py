@@ -14,8 +14,8 @@ clientname="PRINTER"+str(r)
 DHT_topic = 'pr/home/printer/5976397/sts'
 update_rate = 1000 # in msec
 # Initial values
-inkCount = 150
-pagesPrinted = 850
+inkCount = 300
+pagesPrinted = 920
 
 class Mqtt_client():
 
@@ -217,7 +217,7 @@ class MainWindow(QMainWindow):
 
         # set up main window
         self.setGeometry(30, 600, 300, 150)
-        self.setWindowTitle('Filter Alert')
+        self.setWindowTitle('Printer Alert')
 
         # Init QDockWidget objects
         self.connectionDock = ConnectionDock(self.mc)
@@ -235,7 +235,7 @@ class MainWindow(QMainWindow):
 
             if inkCount < 0:
                 inkCount = 0
-
+            
         # sending data status
         current_data = 'Pages: '+str(pagesPrinted)+' Ink: '+str(inkCount)
         self.connectionDock.PagesPrinted.setText(str(pagesPrinted))
